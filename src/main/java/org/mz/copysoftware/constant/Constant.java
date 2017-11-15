@@ -1,9 +1,4 @@
-package org.mz.eit.copysoft.constant;
-
-import java.io.File;
-import java.net.URL;
-
-import sun.applet.Main;
+package org.mz.copysoftware.constant;
 
 public interface Constant{
 	
