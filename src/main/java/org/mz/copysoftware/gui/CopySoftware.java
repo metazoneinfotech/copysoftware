@@ -34,6 +34,10 @@ import org.mz.copysoftware.constant.Constant;
 import org.mz.copysoftware.service.CopyDataService;
 import org.mz.copysoftware.service.DetectUSBService;
 
+/**
+ * This class is the base class which detects the USB Drive 
+ * @author Metazone
+ */
 public class CopySoftware   {
 
 	private SystemTray tray;
@@ -43,12 +47,16 @@ public class CopySoftware   {
 	private SettingsFrame settingsFrame=null;
 	private String drive;
 	
-
+        
 	public CopySoftware(){
 		initSystemTrayComponents();
 		initDestination();
 	}
-
+        
+        /**
+         * This method is used to detect the USB Device
+         * @throws IOException 
+         */
 	public void start() throws IOException{
 
 		
@@ -75,10 +83,10 @@ public class CopySoftware   {
 			}
 		}).start();
 		
-		
-		
-
 	}
+        /**
+         * 
+         */
 	public void initSystemTrayComponents(){
 
 		if (!SystemTray.isSupported()) {
@@ -141,14 +149,17 @@ public class CopySoftware   {
 		}
 
 	}
-
+        /**
+         * 
+         */
 	void initDestination()
 
 
 	{
 		BufferedReader reader=null;
 		try {
-			reader = new BufferedReader(new FileReader(Constant.filename));
+                    System.err.println(getClass().getClassLoader().getResource("files/copy-location.txt").getPath());
+			reader = new BufferedReader(new FileReader("D:/Git Projects/copysoftware/target/classes/files/copy-location.txt"));
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		}
