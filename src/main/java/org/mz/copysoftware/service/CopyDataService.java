@@ -17,63 +17,35 @@
 package org.mz.copysoftware.service;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
-import javax.swing.JOptionPane;
-
 import org.apache.commons.io.FileUtils;
-import org.mz.copysoftware.gui.CopySoftware;
+import org.apache.log4j.LogManager;
+import org.mz.copysoftware.gui.TrayApplication;
 
-public class CopyDataService  {
-	
-    private String source;
-    
-        
-	 public CopyDataService(String source) throws IOException{
-		   this.source = source+":\\"+"\\";
-		   
-	 }
+public class CopyDataService {
+            private static final org.apache.log4j.Logger LOGGER = LogManager.getLogger(CopyDataService.class.getName());
 
-	
-            /**
-             * Ye method asa karta hai
-             * @param source
-             * @param dest
-             * @throws IOException 
-             */
-	   public  void copyFileUsingStream(File source, File dest) throws IOException {
-	        InputStream is = null;
-	        OutputStream os = null;
-	        try {
-	            is = new FileInputStream(source);
-	            os = new FileOutputStream(dest);
-	            byte[] buffer = new byte[1024];
-	            int length;
-	            while ((length = is.read(buffer)) > 0) {
-	                os.write(buffer, 0, length);
-	            }
-	        } finally {
-	            is.close();
-	            os.close();
-	        }
-	    }
-	   public  void  copy() throws IOException {
 
-	    	 //  System.out.println(this.source);
-	            try{
-	            File source = new File(this.source);
-	            File dest = new File(CopySoftware.copyLocation);
-	            FileUtils.copyDirectory(source,dest);   
-	            }catch (java.lang.IllegalArgumentException e){
-	            	System.out.println("lol");
-	            	JOptionPane.showMessageDialog(null,"System 32 bit error");
-	            	
-	            }
-	            // copyFileUsingStream(source,dest);
-	    }
-	   
+    private final String source;
+
+        /**
+         * This is a constructor initializes the source of copy.
+         * @param source 
+         */
+    public CopyDataService(String source) {
+        this.source = source + ":\\" + "\\";
+        LOGGER.info("CopyDataService()");
+    }
+
+    /**
+     *This method copies the data of source and destination.
+     * @throws IOException
+     */
+    public void copy() throws IOException {
+        File sourceFile = new File(source);
+        File dest = new File(TrayApplication.copyLocation);
+        FileUtils.copyDirectory(sourceFile, dest);
+        LOGGER.info("Copy()");
+    }
+
 }
