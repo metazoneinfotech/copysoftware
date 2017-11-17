@@ -1,0 +1,5 @@
+17-11-2017 18:50:00 INFO  TrayApplication:86 - initSystemTrayComponents()
+17-11-2017 18:50:00 INFO  TrayApplication:103 - initdestination
+17-11-2017 18:50:00 INFO  TrayApplication:113 - Reader close
+17-11-2017 18:50:26 INFO  TrayApplication:59 - Tray application constructor performed
+17-11-2017 18:50:26 INFO  App:50 - Application Started
