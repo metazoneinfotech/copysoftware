@@ -158,8 +158,7 @@ public class CopySoftware   {
 	{
 		BufferedReader reader=null;
 		try {
-                    System.err.println(getClass().getClassLoader().getResource("files/copy-location.txt").getPath());
-			reader = new BufferedReader(new FileReader("D:/Git Projects/copysoftware/target/classes/files/copy-location.txt"));
+			reader = new BufferedReader(new FileReader(Constant.filename));
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		}
