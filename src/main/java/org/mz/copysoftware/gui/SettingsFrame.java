@@ -31,8 +31,8 @@ import org.apache.log4j.Logger;
 import org.mz.copysoftware.constant.Constant;
 
 public class SettingsFrame extends javax.swing.JFrame {
-    private static final Logger LOGGER = LogManager.getLogger(SettingsFrame.class.getName());
 
+    private static final Logger LOGGER = LogManager.getLogger(SettingsFrame.class.getName());
 
     public SettingsFrame() {
         super("CopySoftware");
@@ -40,7 +40,8 @@ public class SettingsFrame extends javax.swing.JFrame {
     }
 
     /**
-     * This method makes the panel and add the necessary components to the panel.
+     * This method makes the panel and add the necessary components to the
+     * panel.
      */
     private void initComponents() {
 
@@ -106,7 +107,6 @@ public class SettingsFrame extends javax.swing.JFrame {
 
         getContentPane().add(panel, java.awt.BorderLayout.CENTER);
         setResizable(false);
-
         pack();
 
         browseBtn.addActionListener((ActionEvent arg0) -> {
@@ -131,16 +131,15 @@ public class SettingsFrame extends javax.swing.JFrame {
         LOGGER.info("Browse button clicked");
     }
 
-  
     private void saveBtnActionPerformed() {
         saveCopyDestination();
         dispose();
         LOGGER.info("Save button clicked");
     }
 
-        /**
-         * This method saves the copy location of the data.
-         */
+    /**
+     * This method saves the copy location of the data.
+     */
     public void saveCopyDestination() {
         FileWriter writer = null;
         try {
@@ -149,7 +148,7 @@ public class SettingsFrame extends javax.swing.JFrame {
             TrayApplication.copyLocation = copyDestinationField.getText();
             LOGGER.info("Save the copy location of destination");
         } catch (IOException e) {
-            LOGGER.error(e.getMessage(),e);
+            LOGGER.error(e.getMessage(), e);
         } finally {
             try {
                 if (writer != null) {
@@ -157,11 +156,11 @@ public class SettingsFrame extends javax.swing.JFrame {
                     LOGGER.info("Close the method");
                 }
             } catch (IOException ex) {
-                LOGGER.error(ex.getMessage(),ex);
+                LOGGER.error(ex.getMessage(), ex);
             }
         }
     }
-    
+
     /**
      * This method set the latest copy destination to text field.
      */
