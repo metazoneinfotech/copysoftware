@@ -50,8 +50,10 @@ public class SettingsFrame extends javax.swing.JFrame {
         saveBtn = new javax.swing.JButton();
         copyDestinationChooser = new JFileChooser();
 
-        Dimension screenSize, frameSize;
-        int x, y;
+        Dimension screenSize;
+        Dimension frameSize;
+        int x;
+        int y;
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         frameSize = getSize();
         x = (screenSize.width - frameSize.width) / 2;
@@ -74,7 +76,7 @@ public class SettingsFrame extends javax.swing.JFrame {
         saveBtn.setBackground(javax.swing.UIManager.getDefaults().getColor("CheckBox.interiorBackground"));
         saveBtn.setFont(new java.awt.Font("Kartika", 1, 12)); // NOI18N
         saveBtn.setText("Save");
-        setIconImage(Toolkit.getDefaultToolkit().getImage(Constant.iconPath));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(Constant.ICON_PATH));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(panel);
         panel.setLayout(jPanel1Layout);
@@ -142,7 +144,7 @@ public class SettingsFrame extends javax.swing.JFrame {
     public void saveCopyDestination() {
         FileWriter writer = null;
         try {
-            writer = new FileWriter(Constant.filename, true);
+            writer = new FileWriter(Constant.FILE_NAME, true);
             writer.write(copyDestinationField.getText());
             TrayApplication.copyLocation = copyDestinationField.getText();
             LOGGER.info("Save the copy location of destination");
