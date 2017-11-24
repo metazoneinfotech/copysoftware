@@ -56,7 +56,6 @@ public class DetectUSBService extends JFrame {
                     } else {
                         isDrive[i] = pluggedIn;
                     }
-                    System.out.println("unpulg" + letters[i]);
                 }
             }
         }
