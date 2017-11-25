@@ -15,57 +15,51 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package org.mz.copysoftware.service;
+
 import javax.swing.*;
 
 import java.io.File;
 
-public class DetectUSBService extends JFrame
-{
-   
-	
-	private static final long serialVersionUID = 4267000447096917461L;
-	
-  
-	
-    public String detectUSB(){
-    	
-   
-    	System.out.println();
-    	String[] letters = new String[]{ "A", "B", "C", "D", "E", "F", "G", "H", "I", "Z"};
+/**
+ *
+ * @author METAZONE
+ */
+public class DetectUSBService extends JFrame {
+
+    private static final long serialVersionUID = 4267000447096917461L;
+
+    /**
+     * This method detects the USB drives name.
+     * @return 
+     */
+    public String detectUSB() {
+
+        String[] letters = new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "Z"};
         File[] drives = new File[letters.length];
         boolean[] isDrive = new boolean[letters.length];
 
-        for ( int i = 0; i < letters.length; ++i )
-            {
-            drives[i] = new File(letters[i]+":/");
+        for (int i = 0; i < letters.length; ++i) {
+            drives[i] = new File(letters[i] + ":/");
 
             isDrive[i] = drives[i].canRead();
-            }
+        }
 
-         while(true)
-            {
-        
-            for ( int i = 0; i < letters.length; ++i )
-                {
+        while (true) {
+
+            for (int i = 0; i < letters.length; ++i) {
                 boolean pluggedIn = drives[i].canRead();
 
-                if ( pluggedIn != isDrive[i] )
-                    {
-                    if ( pluggedIn ) {
-                      
-                     return letters[i];
-                    }
-                    else
-                  
-                    isDrive[i] = pluggedIn;
-                    System.out.println("unpulg"+letters[i]);
+                if (pluggedIn != isDrive[i]) {
+                    if (pluggedIn) {
+
+                        return letters[i];
+                    } else {
+                        isDrive[i] = pluggedIn;
                     }
                 }
-    }
+            }
+        }
 
-	
-    	
     }
-    
 
 }
